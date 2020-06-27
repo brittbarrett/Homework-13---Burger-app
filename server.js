@@ -1,7 +1,7 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
-const cTable = require('console.table');
+const cTable = require("console.table");
 
 // create the connection information for the sql database
 var connection = mysql.createConnection({
@@ -15,29 +15,29 @@ var connection = mysql.createConnection({
 
   // Your password
   password: "Inuyasha!34!",
-  database: "tracker_DB"
+  database: "tracker_DB",
 });
 
 // connect to the mysql server and sql database
-connection.connect(function(err) {
+connection.connect(function (err) {
   if (err) throw err;
   // run the start function after the connection is made to prompt the user
   start();
 });
 
-function viewDepartment(){}
+function viewDepartment() {}
 
-function viewRole(){}
+function viewRole() {}
 
-function viewEmployee(){}
+function viewEmployee() {}
 
-function addDepartment(){}
+function addDepartment() {}
 
-function addRole(){}
+function addRole() {}
 
-function addEmployee(){}
+function addEmployee() {}
 
-function updateRole(){}
+function updateRole() {}
 
 // function which prompts the user for what action they should take
 function start() {
@@ -46,16 +46,15 @@ function start() {
       name: "postOrBid",
       type: "list",
       message: "Would you like to [POST] an auction or [BID] on an auction?",
-      choices: ["POST", "BID", "EXIT"]
+      choices: ["POST", "BID", "EXIT"],
     })
-    .then(function(answer) {
+    .then(function (answer) {
       // based on their answer, either call the bid or the post functions
       if (answer.postOrBid === "POST") {
         postAuction();
-      }
-      else if(answer.postOrBid === "BID") {
+      } else if (answer.postOrBid === "BID") {
         bidAuction();
-      } else{
+      } else {
         connection.end();
       }
     });
@@ -69,26 +68,26 @@ function postAuction() {
       {
         name: "item",
         type: "input",
-        message: "What is the item you would like to submit?"
+        message: "What is the item you would like to submit?",
       },
       {
         name: "category",
         type: "input",
-        message: "What category would you like to place your auction in?"
+        message: "What category would you like to place your auction in?",
       },
       {
         name: "startingBid",
         type: "input",
         message: "What would you like your starting bid to be?",
-        validate: function(value) {
+        validate: function (value) {
           if (isNaN(value) === false) {
             return true;
           }
           return false;
-        }
-      }
+        },
+      },
     ])
-    .then(function(answer) {
+    .then(function (answer) {
       // when finished prompting, insert a new item into the db with that info
       connection.query(
         "INSERT INTO auctions SET ?",
@@ -96,9 +95,9 @@ function postAuction() {
           item_name: answer.item,
           category: answer.category,
           starting_bid: answer.startingBid || 0,
-          highest_bid: answer.startingBid || 0
+          highest_bid: answer.startingBid || 0,
         },
-        function(err) {
+        function (err) {
           if (err) throw err;
           console.log("Your auction was created successfully!");
           // re-prompt the user for if they want to bid or post
@@ -110,7 +109,7 @@ function postAuction() {
 
 function bidAuction() {
   // query the database for all items being auctioned
-  connection.query("SELECT * FROM auctions", function(err, results) {
+  connection.query("SELECT * FROM auctions", function (err, results) {
     if (err) throw err;
     // once you have the items, prompt the user for which they'd like to bid on
     inquirer
@@ -118,22 +117,22 @@ function bidAuction() {
         {
           name: "choice",
           type: "rawlist",
-          choices: function() {
+          choices: function () {
             var choiceArray = [];
             for (var i = 0; i < results.length; i++) {
               choiceArray.push(results[i].item_name);
             }
             return choiceArray;
           },
-          message: "What auction would you like to place a bid in?"
+          message: "What auction would you like to place a bid in?",
         },
         {
           name: "bid",
           type: "input",
-          message: "How much would you like to bid?"
-        }
+          message: "How much would you like to bid?",
+        },
       ])
-      .then(function(answer) {
+      .then(function (answer) {
         // get the information of the chosen item
         var chosenItem;
         for (var i = 0; i < results.length; i++) {
@@ -149,20 +148,19 @@ function bidAuction() {
             "UPDATE auctions SET ? WHERE ?",
             [
               {
-                highest_bid: answer.bid
+                highest_bid: answer.bid,
               },
               {
-                id: chosenItem.id
-              }
+                id: chosenItem.id,
+              },
             ],
-            function(error) {
+            function (error) {
               if (error) throw err;
               console.log("Bid placed successfully!");
               start();
             }
           );
-        }
-        else {
+        } else {
           // bid wasn't high enough, so apologize and start over
           console.log("Your bid was too low. Try again...");
           start();

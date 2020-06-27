@@ -1,0 +1,22 @@
+<h1>Welcome to Britt's Burgers!</h1>
+
+
+<h2>Burgers Devoured</h2>
+
+<ul>
+    {{#each burgers}}
+    {{#unless devoured}}
+    {{> burgers/burger-block devoured=true}}
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>Burgers not Devoured</h2>
+
+<ul>
+    {{#each burgers}}
+    {{#if devoured}}
+    {{>burgers/burger-block devoured=false}}
+    {{/if}}
+    {{/each}}
+</ul>

@@ -21,12 +21,7 @@ h1 {
 body {
   background-color: black;
 }
-.devUL {
-  float: right;
-}
-.ordUL {
-  float: left;
-}
+
 li {
   color: #ffef00;
   text-shadow: 0 0 3px #ffef00, 0 0 5px #ffef00;
@@ -34,6 +29,7 @@ li {
 }
 #orderMore {
   text-align: center;
+
   color: #ff00c1;
   font-size: 35px;
   font-family: "Permanent Marker", cursive;
@@ -50,4 +46,14 @@ form {
 }
 #bn {
   height: 25px;
+}
+#orderBtn {
+  font-family: "Amatic SC", cursive;
+  background-color: #c24cf6;
+}
+button {
+  border-radius: 15px 50px;
+  height: 35px;
+  width: 130px;
+  border: none;
 }

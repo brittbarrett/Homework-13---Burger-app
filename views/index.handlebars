@@ -1,38 +1,54 @@
-<h1>Britt's Burgers!</h1>
+<div class="container">
+
+    <h1>Britt's Burgers!</h1>
+
+    <div class="row">
+        <div class="col-sm">
+
+            <h2 id="ordTitle">Burgers Ordered</h2>
+
+            <ul id="ordUL">
+                {{#each burgers}}
+                {{#if devoured}}
+                {{>burgers/burger-block devoured=false}}
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-sm">
+            {{!-- burger image for middle column --}}
+        </div>
+
+        <div class="col-sm">
+            <h2 id="devTitle">Burgers Devoured</h2>
+
+            <ul id="devUL">
+                {{#each burgers}}
+                {{#unless devoured}}
+                {{> burgers/burger-block devoured=true}}
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
 
 
-<h2 id="devTitle">Burgers Devoured</h2>
-
-<ul id="devUL">
-    {{#each burgers}}
-    {{#unless devoured}}
-    {{> burgers/burger-block devoured=true}}
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2 id="ordTitle">Burgers Ordered</h2>
-
-<ul id="ordUL">
-    {{#each burgers}}
-    {{#if devoured}}
-    {{>burgers/burger-block devoured=false}}
-    {{/if}}
-    {{/each}}
-</ul>
-
-<h2 id="orderMore">Order another burger</h2>
-<form class="create-form">
-
-    <div class="form-group">
-        <label id="bnLabel" for="bn">Burger Name:</label>
-        <input type="text" id="bn" name="burgerName">
     </div>
 
-    <div class="form-group">
-        <label for="devoured">Anything else?</label><br>
-        <input type="radio" name="devoured" value="1" checked>I want this burger!
-    </div>
+    <h2 id="orderMore">Order another burger</h2>
 
-    <button type="submit">Order Burger</button>
-</form>
+    <form class="create-form">
+
+        <div class="form-group">
+            <label id="bnLabel" for="bn">Burger Name:</label>
+            <input type="text" id="bn" name="burgerName">
+        </div>
+
+        <div class="form-group">
+            <label for="devoured">Anything else?</label><br>
+            <input type="radio" name="devoured" value="1" checked>I want this burger!
+        </div>
+
+        <button type="submit" id="orderBtn">Order Burger</button>
+    </form>
+
+</div>

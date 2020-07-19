@@ -4,6 +4,7 @@ h1 {
   font-family: "Permanent Marker", cursive;
   font-size: 70px;
   text-shadow: 0 0 3px #ff00c1, 0 0 5px #ff00c1;
+  padding-bottom: 40px;
 }
 #ordTitle {
   color: #39ff14;

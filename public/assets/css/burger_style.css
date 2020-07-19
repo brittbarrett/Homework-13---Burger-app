@@ -26,6 +26,7 @@ li {
   color: #ffef00;
   text-shadow: 0 0 3px #ffef00, 0 0 5px #ffef00;
   font-family: "Indie Flower", cursive;
+  font-size: 20px;
 }
 #orderMore {
   text-align: center;
@@ -56,4 +57,10 @@ button {
   height: 35px;
   width: 130px;
   border: none;
+  font-family: "Amatic SC", cursive;
+  font-size: 17px;
 }
+
+/* .delete-burger {
+  padding: 0px;
+} */

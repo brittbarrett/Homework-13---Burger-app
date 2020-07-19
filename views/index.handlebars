@@ -1,9 +1,9 @@
-<h1>Welcome to Britt's Burgers!</h1>
+<h1>Britt's Burgers!</h1>
 
 
-<h2>Burgers Devoured</h2>
+<h2 id="devTitle">Burgers Devoured</h2>
 
-<ul>
+<ul id="devUL">
     {{#each burgers}}
     {{#unless devoured}}
     {{> burgers/burger-block devoured=true}}
@@ -11,9 +11,9 @@
     {{/each}}
 </ul>
 
-<h2>Burgers Ordered</h2>
+<h2 id="ordTitle">Burgers Ordered</h2>
 
-<ul>
+<ul id="ordUL">
     {{#each burgers}}
     {{#if devoured}}
     {{>burgers/burger-block devoured=false}}
@@ -21,11 +21,11 @@
     {{/each}}
 </ul>
 
-<h2>Order another burger</h2>
+<h2 id="orderMore">Order another burger</h2>
 <form class="create-form">
 
     <div class="form-group">
-        <label for="bn">Burger Name:</label>
+        <label id="bnLabel" for="bn">Burger Name:</label>
         <input type="text" id="bn" name="burgerName">
     </div>
 

@@ -1,0 +1,53 @@
+h1 {
+  text-align: center;
+  color: #ff00c1;
+  font-family: "Permanent Marker", cursive;
+  font-size: 70px;
+  text-shadow: 0 0 3px #ff00c1, 0 0 5px #ff00c1;
+}
+#ordTitle {
+  color: #39ff14;
+  font-family: "Permanent Marker", cursive;
+  font-size: 30px;
+  text-shadow: 0 0 3px #39ff14, 0 0 5px #39ff14;
+}
+#devTitle {
+  color: #ff0303;
+  font-family: "Permanent Marker", cursive;
+  font-size: 30px;
+  text-shadow: 0 0 3px #ff0303, 0 0 5px #ff0303;
+  float: right;
+}
+body {
+  background-color: black;
+}
+.devUL {
+  float: right;
+}
+.ordUL {
+  float: left;
+}
+li {
+  color: #ffef00;
+  text-shadow: 0 0 3px #ffef00, 0 0 5px #ffef00;
+  font-family: "Indie Flower", cursive;
+}
+#orderMore {
+  text-align: center;
+  color: #ff00c1;
+  font-size: 35px;
+  font-family: "Permanent Marker", cursive;
+  text-shadow: 0 0 3px #ff00c1, 0 0 5px #ff00c1;
+}
+form {
+  text-align: center;
+}
+#bnLabel {
+  font-family: "Amatic SC", cursive;
+  color: #00ffcd;
+  text-shadow: 0 0 3px #00ffcd, 0 0 5px #00ffcd;
+  font-size: 30px;
+}
+#bn {
+  height: 25px;
+}
